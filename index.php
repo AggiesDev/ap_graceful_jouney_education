@@ -5,8 +5,8 @@ $year = 2026;
 
 $aboutHighlights = [
     "Legally registered Myanmar-based company established in September 2019 and headquartered in Yangon.",
-    "Expanded with a dedicated International Education Consultancy Division in August 2024.",
-    "Secured cooperation agreements in April 2025 with reputable international universities, accredited institutions across 18 countries, and a visa-processing corporate group with over 20 years of experience.",
+    "Expanded with a dedicated International Education Consultancy Division in August to September 2024.",
+    "Secured cooperation agreements in April to May 2025 with reputable international universities, accredited institutions across 20 countries, and a visa-processing corporate group with over 20 years of experience.",
     "Offers Free School Application Processing and Free Visa Process Guidance through transparent, ethical, and student-first support.",
 ];
 
@@ -14,7 +14,7 @@ $leadership = [
     [
         "name" => "Mrs. Pan Ei Thu Zar @ Ellie",
         "position" => "Managing Director / Founder",
-        "qualification" => "MBA in Accounts and Finance",
+        // "qualification" => "MBA in Accounts and Finance",
         "extra" => "BA (Eco), DFM, DFA, EDBM",
         "photo" => "images/leaders/panei.jpg",
     ],
@@ -45,7 +45,9 @@ $destinations = [
     ["name" => "Singapore", "flag" => "images/flags/svg/sg.svg"],
     ["name" => "Switzerland", "flag" => "images/flags/svg/ch.svg"],
     ["name" => "Netherlands", "flag" => "images/flags/svg/nl.svg"],
-    ["name" => "China / Hong Kong", "flag" => "images/flags/svg/cn.svg"]
+    ["name" => "China / Hong Kong", "flag" => "images/flags/svg/cn.svg"],
+    ["name" => "Hungary", "flag" => "images/flags/svg/hu.svg"],
+    ["name" => "Malta", "flag" => "images/flags/svg/mt.svg"]
 ];
 
 $coreServices = [
@@ -642,12 +644,32 @@ function asset_exists(string $path): bool {
 
 html{
     scroll-behavior:smooth;
+    scroll-padding-top:7rem;
 }
 
 body{
     font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color:var(--ink);
     background:#f8faff;
+}
+
+img{
+    max-width:100%;
+}
+
+/* Allow flex and grid children to shrink when Safari uses intrinsic sizes. */
+.row > *,
+.award-top > *,
+.award-body > *,
+.award-meta > *,
+.contact-card-head > :last-child{
+    min-width:0;
+}
+
+.section,
+.feedback-award-section,
+.footer{
+    overflow-wrap:break-word;
 }
 
 .text-primary{
@@ -659,6 +681,7 @@ body{
    ========================================================= */
 .navbar{
     background:linear-gradient(135deg, rgba(34,50,76,0.96), rgba(48,72,112,0.94));
+    -webkit-backdrop-filter:blur(14px);
     backdrop-filter:blur(14px);
     box-shadow:0 8px 30px rgba(22,32,49,0.18);
     border-bottom:1px solid rgba(255,255,255,0.08);
@@ -680,6 +703,10 @@ body{
 .navbar-brand span,
 .navbar-brand small{
     white-space:nowrap;
+}
+
+.navbar-brand > div:last-child{
+    min-width:0;
 }
 
 .navbar-brand span{
@@ -823,6 +850,7 @@ body{
 .hero-stat-card{
     background:rgba(255,255,255,.10);
     border:1px solid rgba(255,255,255,.16);
+    -webkit-backdrop-filter:blur(12px);
     backdrop-filter:blur(12px);
     border-radius:22px;
     padding:1.25rem;
@@ -966,6 +994,11 @@ body{
     color:var(--primary);
     font-weight:600;
     box-shadow:0 8px 16px rgba(0,0,0,.04);
+    max-width:calc(100% - .7rem);
+}
+
+.feature-pill i{
+    flex-shrink:0;
 }
 
 /* =========================================================
@@ -1703,7 +1736,7 @@ body{
     position:relative;
     z-index:2;
     display:grid;
-    grid-template-columns:110px 1fr 110px;
+    grid-template-columns:110px minmax(0, 1fr) 110px;
     align-items:center;
     gap:1rem;
     margin-bottom:1rem;
@@ -1775,7 +1808,7 @@ body{
     position:relative;
     z-index:2;
     display:grid;
-    grid-template-columns:320px 1fr;
+    grid-template-columns:320px minmax(0, 1fr);
     gap:2rem;
     align-items:center;
     margin-top:.7rem;
@@ -1848,7 +1881,7 @@ body{
 
 .award-meta{
     display:grid;
-    grid-template-columns:140px 20px 1fr;
+    grid-template-columns:140px 20px minmax(0, 1fr);
     row-gap:.85rem;
     column-gap:.85rem;
     align-items:center;
@@ -2029,6 +2062,24 @@ body{
 /* =========================================================
    15) RESPONSIVE - LARGE LAPTOP / MACBOOK
    ========================================================= */
+@media (min-width:1200px) and (max-width:1440px){
+    .hero{
+        padding:8rem 0 4rem;
+    }
+
+    .hero h1{
+        font-size:clamp(2.8rem, 4.2vw, 3.8rem);
+    }
+
+    .hero-stat-card{
+        padding:1rem;
+    }
+
+    .hero-stat-card h3{
+        font-size:1.75rem;
+    }
+}
+
 @media (max-width:1366px){
     .navbar{
         padding-top:.65rem !important;
@@ -2100,11 +2151,11 @@ body{
     }
 
     .award-top{
-        grid-template-columns:92px 1fr 92px;
+        grid-template-columns:92px minmax(0, 1fr) 92px;
     }
 
     .award-body{
-        grid-template-columns:280px 1fr;
+        grid-template-columns:280px minmax(0, 1fr);
         gap:1.5rem;
     }
 
@@ -2125,6 +2176,14 @@ body{
         padding:4rem 0;
     }
 
+}
+
+/* Collapse before the brand and links compete for space in laptop windows. */
+@media (max-width:1199.98px){
+    .hero{
+        padding:7.5rem 0 4rem;
+    }
+
     .navbar .container{
         max-width:100%;
     }
@@ -2143,10 +2202,17 @@ body{
         background:rgba(36,52,78,.97);
         border-radius:16px;
         box-shadow:0 12px 28px rgba(0,0,0,.16);
+        max-height:calc(100vh - 6rem);
+        max-height:calc(100dvh - 6rem);
+        overflow-y:auto;
     }
 
     .navbar-nav{
         align-items:flex-start !important;
+    }
+
+    .navbar-nav .nav-item{
+        width:100%;
     }
 
     .navbar .nav-link{
@@ -2156,6 +2222,9 @@ body{
         margin:0;
     }
 
+}
+
+@media (max-width:991.98px){
     .leader-photo,
     .initial-avatar{
         width:110px;
@@ -2171,7 +2240,7 @@ body{
     }
 
     .award-top{
-        grid-template-columns:72px 1fr 72px;
+        grid-template-columns:72px minmax(0, 1fr) 72px;
         gap:.6rem;
     }
 
@@ -2320,6 +2389,27 @@ body{
    19) RESPONSIVE - SMALL MOBILE
    ========================================================= */
 @media (max-width:575.98px){
+    .navbar-brand{
+        max-width:calc(100% - 4rem);
+        margin-right:0;
+    }
+
+    .navbar-brand span,
+    .navbar-brand small{
+        white-space:normal;
+        overflow-wrap:break-word;
+    }
+
+    .hero-badge,
+    .contact-feature-badge{
+        max-width:100%;
+    }
+
+    .partnership-download-btn,
+    .nav-pills .nav-link{
+        white-space:normal;
+    }
+
     .brand-logo{
         width:40px;
         height:40px;
@@ -2365,11 +2455,117 @@ body{
         line-height:1.65;
     }
 }
+
+/* Contact layout: readable details alongside the full support panel. */
+#contact .section-title{
+    margin-bottom:2rem;
+}
+
+#contact .contact-card-modern,
+#contact .contact-feature-box{
+    padding:1.4rem;
+    border-radius:24px;
+}
+
+#contact .contact-card-modern{
+    height:100%;
+}
+
+#contact .contact-card-head{
+    gap:.75rem;
+    margin-bottom:.8rem;
+}
+
+#contact .contact-icon{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:14px;
+}
+
+#contact .contact-icon i{
+    font-size:1.3rem;
+}
+
+#contact .contact-title{
+    font-size:1.15rem;
+}
+
+#contact .contact-list{
+    gap:0;
+}
+
+#contact .contact-item{
+    padding:.55rem 0;
+    gap:.65rem;
+}
+
+#contact .contact-left{
+    gap:.65rem;
+}
+
+#contact .contact-value{
+    font-size:1rem;
+}
+
+#contact .copy-message:empty{
+    display:none;
+}
+
+#contact .contact-feature-box h3{
+    font-size:clamp(1.5rem, 2.2vw, 1.9rem);
+    line-height:1.25;
+}
+
+#contact .contact-feature-list{
+    grid-template-columns:minmax(0, 1fr);
+    gap:.85rem 1rem;
+}
+
+#contact .feature-item{
+    min-width:0;
+    gap:.6rem;
+    font-size:.95rem;
+    line-height:1.5;
+}
+
+#contact .contact-quick-actions{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr);
+    gap:.65rem;
+}
+
+#contact .contact-quick-actions .btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    white-space:normal;
+    padding:.7rem .8rem;
+}
+
+#contact .contact-mini-note{
+    line-height:1.5;
+}
+
+@media (min-width:768px){
+    #contact .contact-feature-list,
+    #contact .contact-quick-actions{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width:575.98px){
+    #contact .contact-card-modern,
+    #contact .contact-feature-box{
+        padding:1.15rem;
+        border-radius:20px;
+    }
+}
 </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="90" tabindex="0">
 
-<nav id="mainNav" class="navbar navbar-expand-lg fixed-top navbar-dark py-3">
+<nav id="mainNav" class="navbar navbar-expand-xl fixed-top navbar-dark py-3">
     <div class="container">
         <a class="navbar-brand" href="#home">
             <div class="brand-logo">
@@ -2390,7 +2586,7 @@ body{
         </button>
 
         <div class="collapse navbar-collapse" id="navbarMenu">
-            <ul class="navbar-nav ms-auto align-items-lg-center">
+            <ul class="navbar-nav ms-auto align-items-xl-center">
                 <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#leadership">Leadership Team</a></li>
                 <li class="nav-item"><a class="nav-link" href="#destinations">Destination</a></li>
@@ -2406,7 +2602,7 @@ body{
 <header id="home" class="hero">
     <div class="container">
         <div class="row align-items-center g-4">
-            <div class="col-lg-7">
+            <div class="col-xl-7">
                 <div class="hero-badge"><i class="bi bi-stars"></i> Established since 2019</div>
                 <div class="hero-badge"><i class="bi bi-stars"></i> Registration No: 122202755</div>
                 <h1>Study abroad confidently and experience a graceful journey.</h1>
@@ -2420,11 +2616,11 @@ body{
                 <div class="feature-pills mt-4">
                     <span class="feature-pill"><i class="bi bi-check-circle-fill text-success"></i> Free School Application Processing</span>
                     <span class="feature-pill"><i class="bi bi-check-circle-fill text-success"></i> Free Visa Process Guidance</span>
-                    <!-- <span class="feature-pill"><i class="bi bi-globe2 text-primary"></i> Study opportunities across 18 countries</span> -->
+                    <!-- <span class="feature-pill"><i class="bi bi-globe2 text-primary"></i> Study opportunities across 20 countries</span> -->
                 </div>
             </div>
 
-            <div class="col-lg-5">
+            <div class="col-xl-5">
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <div class="hero-stat-card">
@@ -2454,7 +2650,7 @@ body{
                                 <div class="hero-stat-icon globe-icon">
                                     <i class="bi bi-globe2"></i>
                                 </div>
-                                <h3>18</h3>
+                                <h3>20</h3>
                             </div>
                             <p class="mb-0">Study destination countries and international pathways.</p>
                         </div>
@@ -2512,13 +2708,13 @@ body{
                     <div class="row g-3 text-center">
                         <div class="col-6">
                             <div class="glass-card p-4 h-100">
-                                <h3 class="fw-bold text-primary mb-1">Aug 2024</h3>
+                                <h3 class="fw-bold text-primary mb-1">Aug to Sept 2024</h3>
                                 <p class="text-muted mb-0">Education consultancy division launched</p>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="glass-card p-4 h-100">
-                                <h3 class="fw-bold text-primary mb-1">Apr 2025</h3>
+                                <h3 class="fw-bold text-primary mb-1">Apr to May 2025</h3>
                                 <p class="text-muted mb-0">Major cooperation milestone achieved</p>
                             </div>
                         </div>
@@ -2619,7 +2815,9 @@ body{
 
                         <h4 class="text-primary mb-1"><?= htmlspecialchars($leader['name']) ?></h4>
                         <p class="fw-semibold text-dark mb-2"><?= htmlspecialchars($leader['position']) ?></p>
-                        <p class="text-muted mb-1"><?= htmlspecialchars($leader['qualification']) ?></p>
+                        <?php if (!empty($leader['qualification'])): ?>
+                            <p class="text-muted mb-1"><?= htmlspecialchars($leader['qualification']) ?></p>
+                        <?php endif; ?>
                         <p class="text-muted mb-0"><?= htmlspecialchars($leader['extra']) ?></p>
                     </div>
                 </div>
@@ -2880,10 +3078,10 @@ body{
             <p>Connect with AP Graceful Journey Education for counselling, application support, scholarship guidance, and destination advice.</p>
         </div>
 
-        <div class="row g-4 align-items-stretch">
+        <div class="row g-4 align-items-start contact-layout">
             <!-- Left side: contact information cards -->
-            <div class="col-lg-4">
-                <div class="row g-4">
+            <div class="col-xl-5">
+                <div class="row g-3">
                     <div class="col-md-12">
                         <div class="contact-card contact-card-modern">
                             <div class="contact-card-head">
@@ -2947,7 +3145,7 @@ body{
                         </div>
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="col-sm-6">
                         <div class="contact-card contact-card-modern">
                             <div class="contact-card-head">
                                 <div class="contact-icon"><i class="bi bi-clock-history"></i></div>
@@ -2957,7 +3155,7 @@ body{
                         </div>
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="col-sm-6">
                         <div class="contact-card contact-card-modern">
                             <div class="contact-card-head">
                                 <div class="contact-icon"><i class="bi bi-facebook"></i></div>
@@ -2970,8 +3168,8 @@ body{
             </div>
 
             <!-- Right side: redesigned contact highlight box -->
-            <div class="col-lg-8">
-                <div class="contact-feature-box h-100">
+            <div class="col-xl-7">
+                <div class="contact-feature-box">
                     <div class="contact-feature-badge">
                         <i class="bi bi-stars"></i>
                         Quick Support
@@ -3058,8 +3256,8 @@ body{
 document.querySelectorAll('.navbar .nav-link').forEach(function(link) {
     link.addEventListener('click', function() {
         var navbarMenu = document.getElementById('navbarMenu');
-        if (window.innerWidth < 992 && navbarMenu.classList.contains('show')) {
-            new bootstrap.Collapse(navbarMenu, { toggle: true });
+        if (window.matchMedia('(max-width: 1199.98px)').matches && navbarMenu.classList.contains('show')) {
+            bootstrap.Collapse.getOrCreateInstance(navbarMenu, { toggle: false }).hide();
         }
     });
 });
