@@ -5,8 +5,8 @@ $year = 2026;
 
 $aboutHighlights = [
     "Legally registered Myanmar-based company established in September 2019 and headquartered in Yangon.",
-    "Expanded with a dedicated International Education Consultancy Division in August to September 2024.",
-    "Secured cooperation agreements in April to May 2025 with reputable international universities, accredited institutions across 20 countries, and a visa-processing corporate group with over 20 years of experience.",
+    "Expanded with a dedicated International Education Consultancy Division in September 2024.",
+    "Secured cooperation agreements in May 2025 with reputable international universities, accredited institutions across 20 countries, and a visa-processing corporate group with over 20 years of experience.",
     "Offers Free School Application Processing and Free Visa Process Guidance through transparent, ethical, and student-first support.",
 ];
 
@@ -20,7 +20,7 @@ $leadership = [
     ],
     [
         "name" => "Mr. Arr Man @ Isaac",
-        "position" => "Chief Executive Officer",
+        "position" => "Director",
         "qualification" => "Master of Business Administration",
         "extra" => "BBA, DBA",
         "photo" => "images/leaders/arrman.jpg",
@@ -2708,13 +2708,13 @@ img{
                     <div class="row g-3 text-center">
                         <div class="col-6">
                             <div class="glass-card p-4 h-100">
-                                <h3 class="fw-bold text-primary mb-1">Aug to Sept 2024</h3>
-                                <p class="text-muted mb-0">Education consultancy division launched</p>
+                                <h3 class="fw-bold text-primary mb-1">Sept 2024</h3>
+                                <p class="text-muted mb-0">Education consultancy division Established</p>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="glass-card p-4 h-100">
-                                <h3 class="fw-bold text-primary mb-1">Apr to May 2025</h3>
+                                <h3 class="fw-bold text-primary mb-1">May 2025</h3>
                                 <p class="text-muted mb-0">Major cooperation milestone achieved</p>
                             </div>
                         </div>
